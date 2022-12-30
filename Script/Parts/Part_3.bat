@@ -13,7 +13,11 @@ REM -	Part_3: Install Chocolatey GUI and apps
 REM 			These packages can be modified based on what your specific install requires.
 REM 			Consult the Package Selection shortcut for an interactive checklist of the most common packages a fresh install would need.
 echo Now installing your selected software  . . .
+
+REM - PLACE PACKAGES BELOW THIS LINE ######################################################
 choco install chocolateygui imageglass sudo 7zip vcredist140 firefox vlc sumatrapdf dropbox keepassxc notepadplusplus eartrumpet qbittorrent zoom rainmeter steam-client discord epicgameslauncher itunes anki audacity -y
+REM - PLACE PACKAGES ABOVE THIS LINE ######################################################
+
 color 2F
 echo Chocolatey Packages have been installed
 echo Press any key to continue  . . . 
