@@ -1,0 +1,22 @@
+If you don't know what Z is and you use a terminal a lot, you are missing out.
+
+Z is a tool for *nix systems that keeps track of directories you spend time in, allowing you to hop back to them
+rather than having to cd to a long-ass-named directory every time.
+
+For example, instead having to type in `cd C:\Users\Misha\AppData\Local\PCGen\pcgen`, you can just type `z pcgen` to hop to the exact same destination.
+
+Well it's been ported over to PowerShell and here's how to install it!
+
+1) Open Powershell as admin
+2) Install-Module z -AllowClobber
+	(Select Yes to whatever prompts it will give you.)
+3) Import-Module z
+
+You now have Z! However, once you close your session, PowerShell will unload Z. Let's fix that! Run these commands!
+1) test-path $profile
+	This will more than likely return `false` unless you actually have a PowerShell profile already. If you have a PowerShell profile already, skip step 2.
+2) new-item -path $profile -itemtype file -force
+3) notepad $profile
+
+This should open up Notepad. You'll need to paste "Import-Module z" (no quotation marks in the actual file though) into Notepad and save it. Now PowerShell will load Z every time it runs, 
+allowing you to navigate the terminal with ease!

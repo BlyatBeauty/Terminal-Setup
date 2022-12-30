@@ -1,0 +1,3 @@
+##### Enable PowerShell Scripts #####
+ # Run PowerShell as administrator
+set-executionpolicy remotesigned

@@ -1,0 +1,4 @@
+How to set up Git Bash in Windows Terminal, see video file 'How to Setup Git Bash in Windows Terminal in under a minute'
+
+ShellBashScriptOpen_v3 is to associate Bash shell scripts with WSL2, based off of the instructions found at 
+https://superuser.com/questions/1260528/associating-linux-shell-sh-scripts-on-windows-10-to-bash-or-wsl

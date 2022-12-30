@@ -1,0 +1,26 @@
+sudo choco install Package1 Package2 . . .
+
+
+sudo
+vlc 
+firefox 
+imageglass 
+7zip 
+sumatrapdf 
+eartrumpet 
+qbittorrent 
+vcredist140 
+notepadplusplus 
+windirstat 
+discord 
+dropbox 
+steam-client 
+epicgameslauncher
+rainmeter
+googlechrome
+geforce-game-ready-driver
+geforce-experience
+spotify
+keepassxc
+minecraft-launcher
+dropbox

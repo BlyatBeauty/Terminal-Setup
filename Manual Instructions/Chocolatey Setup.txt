@@ -1,0 +1,19 @@
+##### Enable PowerShell Scripts #####
+ # Run PowerShell as administrator
+set-executionpolicy remotesigned
+ # Run the rest of these commands in PowerShell
+
+##### Download Chocolatey #####
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+ # Close and reopen PowerShell as admin
+
+##### Download Chocolatey GUI #####
+choco install chocolateygui
+
+
+For the keyboard warriors:
+
+https://community.chocolatey.org/packages   - Package list
+
+choco install 
