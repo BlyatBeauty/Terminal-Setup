@@ -1,4 +1,6 @@
-The ChocolateyUpdate XML file is an automated task that runs the 'chocoupdate.bat' script daily, at 9:30 pm + whenever the computer starts up.
+The ChocolateyUpdate XML file is an automated task that runs the 'chocoupdate.ps1' script daily, at 9:30 pm.
+
+You may have to edit the XML file in notepad and set the <Arguments> line near the end of the file to the location where you saved chocoupdate.ps1 (put this location in "double quotes")
 
 To import it, 
 
@@ -6,11 +8,15 @@ To import it,
 2) Right-click on Task Scheduler Library and select Import Task
 3) Import ChocolateyUpdate.xml as a task.
 
+To manually set up Task Scheduler, just know that running .ps1 scripts in Task Scheduler is kinda janky.
+The command you run is PowerShell.exe and the location to the script (in "double quotes") is the location where you saved the chocoupdate.ps1 script
+
+
 However, you'll quickly come across an annoying quirk of Chocolatey - when it updates you get desktop icons for all those programs. If you find this annoying, read on.
 
 This PowerShell profile script is thanks to /u/JJenkx on Reddit. Original comment can be found at https://www.reddit.com/r/chocolatey/comments/s4jwtj/installers_creating_desktop_shortcuts/ipl9ivs/?context=3
 
-# save this to where "echo $profile" shows the profile location. create the file if not there
+# save this function to where "echo $profile" shows the profile location. create the file if not there (by typing in notepad $profile - you will have to run PowerShell as admin for this)
 
 function choco {
 $CHOCOEXE=$(Get-Command choco.exe).Path
