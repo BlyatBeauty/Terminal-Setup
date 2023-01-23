@@ -1,0 +1,65 @@
+PowerShell Profiles:
+
+This document will combine 2 previous things I had in here: PowerShell Z and ChocoUpdate.
+
+==============================================================================================
+
+PowerShell Z:
+
+If you don't know what Z is and you use a terminal a lot, you are missing out.
+
+Z is a tool for *nix systems that keeps track of directories you spend time in, allowing you to hop back to them
+rather than having to cd to a long-ass-named directory every time.
+
+For example, instead having to type in `cd C:\Users\Misha\AppData\Local\PCGen\pcgen`, you can just type `z pcgen` to hop to the exact same destination.
+
+Well it's been ported over to PowerShell and here's how to install it!
+
+1) Open Powershell as admin
+2) Install-Module z -AllowClobber
+	(Select Yes to whatever prompts it will give you.)
+3) Import-Module z
+
+You now have Z! However, once you close your session, PowerShell will unload Z. Let's fix that! Run these commands!
+1) test-path $profile
+	This will more than likely return `false` unless you actually have a PowerShell profile already. If you have a PowerShell profile already, skip step 2.
+2) new-item -path $profile -itemtype file -force
+3) notepad $profile
+
+This should open up Notepad. You'll need to paste `Import-Module z` (no backticks in the actual file though) into Notepad and save it. 
+Now PowerShell will load Z every time it runs, allowing you to navigate the terminal with ease!
+
+==============================================================================================
+
+Fix Choco's annoying desktop icon habit:
+
+This PowerShell profile script is thanks to /u/JJenkx on Reddit. Original comment can be found at https://www.reddit.com/r/chocolatey/comments/s4jwtj/installers_creating_desktop_shortcuts/ipl9ivs/?context=3
+
+1) Open PowerShell as admin
+2) Run `notepad $profile`
+3) Underneath `Import-Module z` add the following block of text:
+
+function choco {
+$CHOCOEXE=$(Get-Command choco.exe).Path
+If ([bool]$CHOCOEXE){
+    $CHOCOARG1=$Args[0]
+    $CHOCOARG2=$Args[1]
+    $ALLCHOCOARGS=$Args
+    If ($CHOCOARG1 -eq "upgrade" -And [bool]$CHOCOARG2) {
+        echo "`nGoing to remove any new shortcuts from desktop generated from now until upgrade finishes`n"
+        $StartTime = Get-Date
+        & $CHOCOEXE $ALLCHOCOARGS
+        $Desktops = "$env:PUBLIC\Desktop", "$env:USERPROFILE\Desktop"
+        $ICONSTOREMOVE=$($Desktops | Get-ChildItem -Filter "*.lnk" -ErrorAction SilentlyContinue | Where-Object { $_.LastWriteTime -gt $StartTime })
+        echo "`nRemoving desktop icons:"
+        echo $ICONSTOREMOVE
+        $Desktops | Get-ChildItem -Filter "*.lnk" -ErrorAction SilentlyContinue | Where-Object { $_.LastWriteTime -gt $StartTime } | Remove-Item
+    }else {
+        & $CHOCOEXE $ALLCHOCOARGS
+        }
+}else {
+    echo "`nUser defined function ""choco"" did not find choco.exe in path. Is choco installed?`n"
+    }
+}
+
+Remember to do this for both Regular PowerShell that comes with Windows and PowerShell 7 if you download it, as they have separate profile locations and these functions are worth having all the time.

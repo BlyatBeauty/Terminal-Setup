@@ -1,0 +1,18 @@
+ChocoUpdate:
+
+To have chocolatey update automatically, you're gonna wanna do 2 things: Set up automatic package updates and Fix Choco's annoying desktop icon habit
+
+Set up automatic package updates:
+
+1) Open Task Scheduler and make a new basic task
+2) Make it run daily at whatver time you wish
+3) The action will be Run a Program;
+4) The program you'll be running is either PowerShell.exe or pwsh.exe (If you installed the most recent version of PowerShell, which like, you totally should.)
+5) The argument for the program will be 
+-Command "choco upgrade all -y"
+6) In the Creat a Basic Task menu, near the end, you'll have the option to "Open Properties after finishing"
+7) In Properties, on the first page, you'll have a box to check titled "Run with highest privileges"
+
+Fix Choco's annoying desktop icon habit:
+
+This is covered in the Setting up PowerShell file.

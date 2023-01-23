@@ -24,8 +24,8 @@ echo Press any key to continue  . . .
 Pause > nul
 color 0F
 echo Part 3 has been completed.
-echo In the 'Tools' folder is a file called 'chocoupdate.bat'
-echo Run this file daily to keep Chocolatey packages up to date!
+echo In the 'Tools' folder is a file called 'Make Choco Auto-Update.txt'
+echo Follow those instructions to keep Chocolatey packages up to date automatically!
 echo If you wish to install Windows Subsystem for Linux, please run Part 4 next.
 echo Press any key to continue  . . . 
 Pause > nul
