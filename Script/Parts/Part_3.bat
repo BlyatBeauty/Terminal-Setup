@@ -15,7 +15,7 @@ REM 			Consult the Package Selection shortcut for an interactive checklist of th
 echo Now installing your selected software  . . .
 
 REM - PLACE PACKAGES BELOW THIS LINE ######################################################
-choco install chocolateygui imageglass sudo 7zip vcredist140 firefox vlc sumatrapdf dropbox keepassxc notepadplusplus eartrumpet qbittorrent zoom rainmeter steam-client discord epicgameslauncher itunes anki audacity -y
+choco install 7zip angryip anki audacity arduino chocolateygui boxsync eartrumpet epicgameslauncher firefox git imageglass innosetup itunes keepassxc minecraft-launcher notepadplusplus powershell-core powertoys qbittorrent steam-client sumatrapdf vcredist140 vlc winfetch zoom -y
 REM - PLACE PACKAGES ABOVE THIS LINE ######################################################
 
 color 2F
@@ -26,7 +26,6 @@ color 0F
 echo Part 3 has been completed.
 echo In the 'Tools' folder is a file called 'Make Choco Auto-Update.txt'
 echo Follow those instructions to keep Chocolatey packages up to date automatically!
-echo If you wish to install Windows Subsystem for Linux, please run Part 4 next.
 echo Press any key to continue  . . . 
 Pause > nul
-Exit
+Exit /b

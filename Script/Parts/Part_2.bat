@@ -20,4 +20,4 @@ color 0F
 echo Part 2 has been completed. Please run Part 3 next.
 echo Press any key to continue  . . . 
 Pause > nul
-Exit
+Exit /b
