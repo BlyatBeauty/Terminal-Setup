@@ -8,14 +8,10 @@ The 'Manual Instructions' folder has all the instructions to do all of this manu
 The 'Script' folder has scripts to automate the process - located in the Parts folder, and tools like a common package selector, in the Tools folder.
 Before running the scripts, add the Script folder to your antivirus exclusions. Some AVs see any PowerShell scripts as malicious, which tbf, is good security practice.
 
-Run each Part in order as admin.
+Running the script is easy:
+1) Fill the `packages.txt` with the packages you wish to install (a package selector assistant has been included in the Tools folder. It is a spreadsheet that works both offline via Excel or online via Google Sheets)
+2) Run the `Script.bat` file as admin.
 
-Parts, labelled
-
-Part 1: Allowing PowerShell Scripts to run
-Part 2: Installing Chocolatey
-Part 3: Installing Software via packages
-Part 4: Install WSL2
 
 If you're gonna use chocolatey, you may want the ChocoUpdate script I wrote to update all your packages at once (beats having to type out 'sudo choco update all -y' every time).
 It is located in the Script > Tools folder.

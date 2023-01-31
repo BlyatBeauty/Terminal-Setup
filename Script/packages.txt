@@ -1,0 +1,1 @@
+chocolateygui 7zip vcredist140 powertoys powershell-core
