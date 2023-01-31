@@ -13,4 +13,4 @@ powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.Ser
 color 2F
 echo Chocolatey has been installed
 color 0F
-Exit /b
+Exit

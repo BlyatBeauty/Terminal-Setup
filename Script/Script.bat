@@ -1,3 +1,5 @@
+@echo off
+
 REM Misha's PowerShell Setup Script
 
 :Introductions
@@ -10,18 +12,19 @@ goto Prompt1
 :Prompt1
 	set admin="n"
 	set /p admin=Are you running CMD as an administrator? (Y or N) 
-	if /I "%WSL%"=="yes" goto Prompt2
-	if /I "%WSL%"=="y" goto Prompt2
-	if /I "%WSL%"=="no" goto NoAdmin
-	if /I "%WSL%"=="n" goto NoAdmin
+	if /I "%admin%"=="yes" goto Prompt2
+	if /I "%admin%"=="y" goto Prompt2
+	if /I "%admin%"=="no" goto NoAdmin
+	if /I "%admin%"=="n" goto NoAdmin
+	if /I "%admin%"=="s" goto Script
 	
 :Prompt2
-	set admin="n"
-	set /p admin=Are you running CMD as an administrator? (Y or N) 
-	if /I "%WSL%"=="yes" goto Script
-	if /I "%WSL%"=="y" goto Script
-	if /I "%WSL%"=="no" goto NoPackages
-	if /I "%WSL%"=="n" goto NoPackages
+	set pack="n"
+	set /p admin=Have you selected which packages you wish to install? (Y or N) 
+	if /I "%pack%"=="yes" goto Script
+	if /I "%pack%"=="y" goto Script
+	if /I "%pack%"=="no" goto NoPackages
+	if /I "%pack%"=="n" goto NoPackages
 
 :Script
 REM - Allow PowerShell to run scripts
@@ -31,14 +34,14 @@ REM - Install Chocolatey
 start "Install Chocolatey" /wait "%~dp0Parts\Part_2.bat"
 
 REM - Install packages via Chocolatey
-start "Install Chocolatey" /wait "%~dp0Parts\Part_3.bat"
+start "Install Packages" /wait "%~dp0Parts\Part_3.bat"
 color 2F
 echo Chocolatey Packages have been installed
+color 0F
 echo In the 'Tools' folder is a file called 'Make Choco Auto-Update.txt'
 echo Follow those instructions to keep Chocolatey packages up to date automatically!
 echo Press any key to continue  . . . 
 Pause > nul
-color 0F
 
 REM - Install Linux prompt
 	set WSL="n"
