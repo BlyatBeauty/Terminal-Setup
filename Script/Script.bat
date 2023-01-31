@@ -20,7 +20,7 @@ goto Prompt1
 	
 :Prompt2
 	set pack="n"
-	set /p admin=Have you selected which packages you wish to install? (Y or N) 
+	set /p pack=Have you selected which packages you wish to install? (Y or N) 
 	if /I "%pack%"=="yes" goto Script
 	if /I "%pack%"=="y" goto Script
 	if /I "%pack%"=="no" goto NoPackages
