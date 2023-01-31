@@ -2,23 +2,17 @@
 
 REM Misha's PowerShell Setup Script
 
+REM - Get permissions
+set "params=%*"
+cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) && fsutil dirty query %systemdrive% 1>nul 2>nul || (  echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/k cd ""%~sdp0"" && %~s0 %params%", "", "runas", 1 >> "%temp%\getadmin.vbs" && "%temp%\getadmin.vbs" && exit /B )
+
 :Introductions
 REM Introductions
 echo These scripts are designed to help speed up Windows and PowerShell setup.
 echo Please ensure you have selected your Chocolatey packages before running the script.
-echo This script needs to be run as an administrator
-goto Prompt1
+goto Prompt
 
-:Prompt1
-	set admin="n"
-	set /p admin=Are you running CMD as an administrator? (Y or N) 
-	if /I "%admin%"=="yes" goto Prompt2
-	if /I "%admin%"=="y" goto Prompt2
-	if /I "%admin%"=="no" goto NoAdmin
-	if /I "%admin%"=="n" goto NoAdmin
-	if /I "%admin%"=="s" goto Script
-	
-:Prompt2
+:Prompt
 	set pack="n"
 	set /p pack=Have you selected which packages you wish to install? (Y or N) 
 	if /I "%pack%"=="yes" goto Script
