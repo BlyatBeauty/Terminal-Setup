@@ -31,7 +31,7 @@ REM - Install Chocolatey
 start "Install Chocolatey" /wait "%~dp0Parts\Part_2.bat"
 
 REM - Install packages via Chocolatey
-start "Install Chocolatey" /wait "%~dp0Parts\Part_3.bat"
+start "Install Packages" /wait "%~dp0Parts\Part_3.bat"
 color 2F
 echo Chocolatey Packages have been installed
 echo In the 'Tools' folder is a file called 'Make Choco Auto-Update.txt'
