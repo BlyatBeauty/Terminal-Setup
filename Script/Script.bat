@@ -19,7 +19,7 @@ goto Prompt1
 	
 :Prompt2
 	set admin="n"
-	set /p admin=Are you running CMD as an administrator? (Y or N) 
+	set /p admin=Have you selected which packages you wish to install? (Y or N) 
 	if /I "%WSL%"=="yes" goto Script
 	if /I "%WSL%"=="y" goto Script
 	if /I "%WSL%"=="no" goto NoPackages
