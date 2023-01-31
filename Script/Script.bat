@@ -1,3 +1,5 @@
+@echo off
+
 REM Misha's PowerShell Setup Script
 
 :Introductions
