@@ -25,29 +25,29 @@ REM - Allow PowerShell to run scripts
 call "%~dp0Parts\Part_1.bat"
 
 REM - Install Chocolatey
-start "Install Chocolatey" /wait "%~dp0Parts\Part_2.bat"
+start /wait "Install Chocolatey" cmd /c "%~dp0Parts\Part_2.bat"
 
 REM - Install packages via Chocolatey
-start "Install Packages" /wait "%~dp0Parts\Part_3.bat"
+timeout /t 5
+start /wait "Install Packages" cmd /c "%~dp0Parts\Part_3.bat"
 color 2F
 echo Chocolatey Packages have been installed
 color 0F
-echo In the 'Tools' folder is a file called 'Make Choco Auto-Update.txt'
-echo Follow those instructions to keep Chocolatey packages up to date automatically!
-echo Press any key to continue  . . . 
-Pause > nul
+
+REM - Install Chocolatey Auto-Update Scheduled Task
+call "%~dp0Parts\Part_4.bat"
 
 REM - Install Linux prompt
 	set WSL="n"
 	set /p WSL=Would you like to install Linux via WSL? (Y or N) 
-	if /I "%WSL%"=="yes" goto Part_4
-	if /I "%WSL%"=="y" goto Part_4
+	if /I "%WSL%"=="yes" goto Part_5
+	if /I "%WSL%"=="y" goto Part_5
 	if /I "%WSL%"=="no" goto Fin
 	if /I "%WSL%"=="n" goto Fin
 	
-:Part_4
+:Part_5
 REM - Install Linux via WSL2
-call "%~dp0Parts\Part_4.bat"
+call "%~dp0Parts\Part_5.bat"
 Goto Fin
 
 :Fin
@@ -61,12 +61,6 @@ REM ============================================================================
 REM 			Conditional endings
 REM ==============================================================================================================================
 
-:NoAdmin
-REM - If the user is not running CMD as admin, ask user to restart script as admin
-echo The script has not run, please rerun the script as administrator
-echo Press any key to exit . . .  
-Pause > nul
-exit
 
 :NoPackages
 REM - If the user has not selected packages, tell them to select packages prior to running the script as admin
