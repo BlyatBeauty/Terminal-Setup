@@ -1,5 +1,5 @@
-# Win-Terminal-Setup
-My Windows Terminal Stuff scripts that I use when I do fresh Windows Installs
+# Terminal-Setup
+My Windows Terminal scripts that I use when I do fresh Windows Installs
 
 Included tools: Chocolatey (+gui), sudo, Linux via WSL2
 
